@@ -71,7 +71,7 @@ const translations = {
         grandparentHungarian: "Abuelo/a en la Línea Húngara",
         greatGrandparentHungarian: "Bisabuelo/a en la Línea Húngara",
         greatGreatGrandparentHungarian: "Tatarabuelo/a en la Línea Húngara",
-        greatPrefixHungarian: "Tatarabuelo/a ",
+        greatPrefixHungarian: "Tatara ",
         information: "Información",
         bornIn: "Nacido en",
         aboutYou: "Sobre ti:",
@@ -311,11 +311,10 @@ function nextStep() {
         return;
     }
 
-    ancestorData.push({ level: 'self', birthyear });
+    ancestorData.push({ level: 'self', birthyear }); // No country field in initial form
     document.getElementById('initial-form').style.display = 'none';
-
-        currentLevel = 1;
-        showAncestorForm(getAncestorTitle(currentLevel), false);
+    currentLevel = 1;
+    showAncestorForm(getAncestorTitle(currentLevel), false);
 }
 
 function getAncestorTitle(level) {
@@ -409,15 +408,24 @@ function handleAction() {
 
 function goBack() {
     if (currentLevel === 0) {
+        // Shouldn't happen since initial-form has no back button, but included for safety
         document.getElementById('ancestor-form').style.display = 'none';
         document.getElementById('initial-form').style.display = 'block';
-        const selfData = ancestorData.pop();
+        const selfData = ancestorData.pop() || { birthyear: '' };
         document.getElementById('birthyear').value = selfData.birthyear || '';
-        document.getElementById('country').value = selfData.country || 'no';
+        currentLevel = 0; // Reset to initial state
     } else if (currentLevel > 0) {
         const previousData = ancestorData.pop();
         currentLevel--;
-        showAncestorForm(getAncestorTitle(currentLevel), previousData.country === 'hungary', previousData);
+        if (currentLevel === 0) {
+            // Back to initial form
+            document.getElementById('ancestor-form').style.display = 'none';
+            document.getElementById('initial-form').style.display = 'block';
+            document.getElementById('birthyear').value = previousData.birthyear || '';
+        } else {
+            // Back to previous ancestor
+            showAncestorForm(getAncestorTitle(currentLevel), previousData.country === 'hungary', previousData);
+        }
     }
 }
 
@@ -427,7 +435,6 @@ function goBackFromResult() {
         document.getElementById('initial-form').style.display = 'block';
         const selfData = ancestorData.pop();
         document.getElementById('birthyear').value = selfData.birthyear || '';
-        document.getElementById('country').value = selfData.country || 'no';
         currentLevel = 0;
     } else {
         const previousData = ancestorData.pop();
@@ -438,8 +445,8 @@ function goBackFromResult() {
 
 function determineEligibility() {
     const hungarianAncestor = ancestorData.find(a => a.country === 'hungary');
-    const birthYearHungarian = hungarianAncestor.birthyear;
-    const lastYearInHungary = hungarianAncestor.years ? Math.max(...hungarianAncestor.years.map(p => p.end)) : birthYearHungarian;
+    const birthYearHungarian = hungarianAncestor ? hungarianAncestor.birthyear : null;
+    const lastYearInHungary = hungarianAncestor && hungarianAncestor.years ? Math.max(...hungarianAncestor.years.map(p => p.end)) : birthYearHungarian;
     const self = ancestorData[0];
     const t = translations[currentLanguage].results;
 
@@ -447,7 +454,7 @@ function determineEligibility() {
     let lostCitizenship = false;
     let femaleBreak = false;
 
-    if (birthYearHungarian < 1879 && lastYearInHungary < 1879) {
+    if (!hungarianAncestor || (birthYearHungarian < 1879 && lastYearInHungary < 1879)) {
         result = t.no;
     } else {
         if (birthYearHungarian < 1930 && lastYearInHungary < 1929 && (new Date().getFullYear() - lastYearInHungary) > 10) {
@@ -495,6 +502,11 @@ function showResult(text) {
     document.getElementById('initial-form').style.display = 'none';
     document.getElementById('result').style.display = 'block';
     document.getElementById('result-text').textContent = text;
+}
+
+function changeLanguage() {
+    currentLanguage = document.getElementById('language-select').value;
+    updateUIText();
 }
 
 updateUIText();
