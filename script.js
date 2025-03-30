@@ -261,41 +261,40 @@ function applyTranslations() {
 
 function updateUIText() {
     const t = translations[currentLanguage];
+    const isAncestorFormVisible = document.getElementById('ancestor-form').style.display === 'block';
+    const isResultVisible = document.getElementById('result').style.display === 'block';
+
+    // Initial form elements
     document.getElementById('title').textContent = t.title;
     document.getElementById('about-you').textContent = t.aboutYou;
     document.getElementById('label-birthyear').textContent = t.birthyear;
-    document.getElementById('option-country-no').textContent = t.countryNo;
-    document.getElementById('option-country-yes').textContent = t.countryYes;
     document.getElementById('next-btn').textContent = t.next;
-    document.getElementById('label-ancestor-gender').textContent = t.ancestorGender;
-    document.getElementById('option-ancestor-male').textContent = t.ancestorMale;
-    document.getElementById('option-ancestor-female').textContent = t.ancestorFemale;
-    document.getElementById('label-ancestor-birthyear').textContent = t.ancestorBirthyear;
-    document.getElementById('label-ancestor-country').textContent = t.ancestorCountry;
-    document.getElementById('option-ancestor-country-no').textContent = t.ancestorCountryNo;
-    document.getElementById('option-ancestor-country-yes').textContent = t.ancestorCountryYes;
-    document.getElementById('label-hungary-years').textContent = t.hungaryYears;
-    document.getElementById('hungary-years').placeholder = t.hungaryPlaceholder;
-    document.getElementById('result-title').textContent = t.result;
 
-    const actionBtn = document.getElementById('action-btn');
-    if (actionBtn && (actionBtn.textContent === translations.en.nextAncestor || actionBtn.textContent === translations[currentLanguage].nextAncestor)) {
-        actionBtn.textContent = t.nextAncestor;
-    } else if (actionBtn && (actionBtn.textContent === translations.en.submit || actionBtn.textContent === translations[currentLanguage].submit)) {
-        actionBtn.textContent = t.submit;
+    // Ancestor form elements (only update if visible)
+    if (isAncestorFormVisible) {
+        document.getElementById('label-ancestor-gender').textContent = t.ancestorGender;
+        document.getElementById('option-ancestor-male').textContent = t.ancestorMale;
+        document.getElementById('option-ancestor-female').textContent = t.ancestorFemale;
+        document.getElementById('label-ancestor-birthyear').textContent = t.ancestorBirthyear;
+        document.getElementById('label-ancestor-country').textContent = t.ancestorCountry;
+        document.getElementById('option-ancestor-country-no').textContent = t.ancestorCountryNo;
+        document.getElementById('option-ancestor-country-yes').textContent = t.ancestorCountryYes;
+        document.getElementById('label-hungary-years').textContent = t.hungaryYears;
+        document.getElementById('hungary-years').placeholder = t.hungaryPlaceholder;
+        document.getElementById('back-btn').textContent = t.back;
+
+        const actionBtn = document.getElementById('action-btn');
+        actionBtn.textContent = document.getElementById('ancestor-country').value === 'hungary' ? t.submit : t.nextAncestor;
+
+        const ancestorTitle = document.getElementById('ancestor-title');
+        const isHungary = document.getElementById('ancestor-country').value === 'hungary';
+        ancestorTitle.textContent = `${getAncestorTitle(currentLevel)} ${t.information}${isHungary ? ` (${t.bornIn} ${getHungaryText()})` : ''}`;
     }
 
-    const backBtn = document.getElementById('back-btn');
-    if (backBtn) backBtn.textContent = t.back;
-
-    const backBtnResult = document.getElementById('back-btn-result');
-    if (backBtnResult) backBtnResult.textContent = t.back;
-
-    const ancestorTitle = document.getElementById('ancestor-title');
-    if (ancestorTitle.textContent) {
-        const isHungary = ancestorTitle.textContent.includes('Hungary') || ancestorTitle.textContent.includes('Hungría') || 
-                         ancestorTitle.textContent.includes('Ungaria') || ancestorTitle.textContent.includes('Угорщина');
-        ancestorTitle.textContent = `${getAncestorTitle(currentLevel)} ${t.information}${isHungary ? ` (${t.bornIn} ${getHungaryText()})` : ''}`;
+    // Result section (only update if visible)
+    if (isResultVisible) {
+        document.getElementById('result-title').textContent = t.result;
+        document.getElementById('back-btn-result').textContent = t.back;
     }
 }
 
