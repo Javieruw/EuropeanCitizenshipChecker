@@ -1,6 +1,6 @@
 let currentLevel = 0;
 let ancestorData = [];
-let currentLanguage = 'en';
+let currentLanguage = localStorage.getItem('preferredLanguage') || 'en'; // Load from localStorage or default to 'en'
 
 const translations = {
 en: {
@@ -225,6 +225,7 @@ hu: {
 
 function changeLanguage() {
     currentLanguage = document.getElementById("language-select").value;
+    localStorage.setItem('preferredLanguage', currentLanguage); // Save to localStorage
     updateUIText();
 }
 
@@ -232,6 +233,9 @@ function updateUIText() {
     const t = translations[currentLanguage];
     const isAncestorFormVisible = document.getElementById('ancestor-form').style.display === 'block';
     const isResultVisible = document.getElementById('result').style.display === 'block';
+
+    // Set the dropdown to the current language
+    document.getElementById('language-select').value = currentLanguage;
 
     document.getElementById('title').textContent = t.title;
     document.getElementById('about-you').textContent = t.aboutYou;
@@ -277,7 +281,12 @@ function nextStep() {
         alert(translations[currentLanguage].errors.fillFields);
         return;
     }
-    ancestorData.push({ level: 'self', birthyear });
+    // Ensure the self data is always at index 0
+    if (ancestorData.length === 0) {
+        ancestorData.push({ level: 'self', birthyear });
+    } else {
+        ancestorData[0] = { level: 'self', birthyear }; // Update if already exists
+    }
     document.getElementById('initial-form').style.display = 'none';
     currentLevel = 1;
     showAncestorForm(getAncestorTitle(currentLevel), false);
@@ -375,34 +384,32 @@ function handleAction() {
 }
 
 function goBack() {
-    if (currentLevel === 0) {
+    if (currentLevel === 1) { // Going back to initial form
         document.getElementById('ancestor-form').style.display = 'none';
         document.getElementById('initial-form').style.display = 'block';
-        const selfData = ancestorData.pop() || { birthyear: '' };
+        // Pop the last ancestor (if any) but keep self data
+        if (ancestorData.length > 1) {
+            ancestorData.pop(); // Remove the ancestor data at level 1
+        }
+        const selfData = ancestorData[0] || { birthyear: '' }; // Use self data or default
         document.getElementById('birthyear').value = selfData.birthyear || '';
         currentLevel = 0;
-    } else if (currentLevel > 0) {
+    } else if (currentLevel > 1) { // Going back between ancestor levels
         const previousData = ancestorData.pop();
         currentLevel--;
-        if (currentLevel === 0) {
-            document.getElementById('ancestor-form').style.display = 'none';
-            document.getElementById('initial-form').style.display = 'block';
-            document.getElementById('birthyear').value = previousData.birthyear || '';
-        } else {
-            showAncestorForm(getAncestorTitle(currentLevel), previousData.country === 'hungary', previousData);
-        }
-        updateUIText();
+        showAncestorForm(getAncestorTitle(currentLevel), previousData.country === 'hungary', previousData);
     }
+    updateUIText();
 }
 
 function goBackFromResult() {
     document.getElementById('result').style.display = 'none';
-    if (ancestorData.length === 1 && ancestorData[0].country === 'hungary' && ancestorData[0].birthyear >= 1930) {
+    if (ancestorData.length === 1) { // Only self data exists
         document.getElementById('initial-form').style.display = 'block';
-        const selfData = ancestorData.pop();
+        const selfData = ancestorData[0];
         document.getElementById('birthyear').value = selfData.birthyear || '';
         currentLevel = 0;
-    } else {
+    } else { // Go back to the last ancestor form
         const previousData = ancestorData.pop();
         currentLevel--;
         showAncestorForm(getAncestorTitle(currentLevel), previousData.country === 'hungary', previousData);
@@ -472,4 +479,4 @@ function showResult(resultKey) {
     updateUIText();
 }
 
-updateUIText();
+updateUIText(); // Initial call to set translations and dropdown
