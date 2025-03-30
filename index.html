@@ -3,65 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hungarian Citizenship Eligibility</title>
-      <link rel="stylesheet" href="styles.css">
-
+    <title>European Citizenship Eligibility</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .flag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+        .flag-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.2s;
+        }
+        .flag-item:hover {
+            transform: scale(1.1);
+        }
+        .flag-item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .flag-item.disabled:hover {
+            transform: none;
+        }
+        .flag {
+            width: 80px;
+            height: 48px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .flag-label {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        p {
+            margin-top: 30px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-<select id="language-select" onchange="changeLanguage()">
-    <option value="en">English</option>
-    <option value="hu">Magyar</option> 
-    <option value="ro">Română</option>
-    <option value="es">Español</option>
-    <option value="uk">Українська</option>
-</select>
-
-        <h1 id="title">Hungarian Citizenship Eligibility Checker</h1>
-        
-        <!-- Initial Form -->
-        <div id="initial-form">
-            <h2 id="about-you">About you:</h2>
-            <label for="birthyear" id="label-birthyear">Year of Birth:</label>
-            <input type="number" id="birthyear" min="1800" max="2025" required>
-            
-            <button onclick="nextStep()" id="next-btn">Next</button>
-        </div>
-
-        <!-- Ancestor Form (Dynamic) -->
-        <div id="ancestor-form" style="display: none;">
-            <h2 id="ancestor-title"></h2>
-            <label for="ancestor-gender" id="label-ancestor-gender">Gender:</label>
-            <select id="ancestor-gender" required>
-                <option value="male" id="option-ancestor-male">Male</option>
-                <option value="female" id="option-ancestor-female">Female</option>
-            </select>
-            
-            <label for="ancestor-birthyear" id="label-ancestor-birthyear">Year of Birth:</label>
-            <input type="number" id="ancestor-birthyear" min="1800" max="2025" required oninput="updateHungaryDetails()">
-            
-            <label for="ancestor-country" id="label-ancestor-country">Born in Hungary?</label>
-            <select id="ancestor-country" required oninput="updateHungaryDetails()">
-                <option value="no" id="option-ancestor-country-no">No</option>
-                <option value="hungary" id="option-ancestor-country-yes">Yes</option>
-            </select>
-            
-            <div id="hungary-details" style="display: none;">
-                <label for="hungary-years" id="label-hungary-years">Years Lived in Hungary (e.g., 1900-1910, 1920-1925):</label>
-                <textarea id="hungary-years" rows="4" placeholder="" data-placeholder-en="Enter periods like 1900-1910, 1920-1925"></textarea>
-            </div>
-            
-            <button id="back-btn" onclick="goBack()">Back</button>
-            <button id="action-btn" onclick="handleAction()">Next Ancestor</button>
-        </div>
-
-        <!-- Result -->
-        <div id="result" style="display: none;">
-            <h2 id="result-title">Result</h2>
-            <p id="result-text"></p>
-            <button id="back-btn-result" onclick="goBackFromResult()">Back</button>
+        <h1>European Citizenship Eligibility Checker</h1>
+        <div class="flag-grid">
+            <!-- Spanish -->
+            <a href="#" class="flag-item disabled" title="Coming Soon">
+                <img src="https://flagcdn.com/w80/es.png" alt="Spanish Flag" class="flag">
+                <span class="flag-label">Spanish</span>
+            </a>
+            <!-- French -->
+            <a href="#" class="flag-item disabled" title="Coming Soon">
+                <img src="https://flagcdn.com/w80/fr.png" alt="French Flag" class="flag">
+                <span class="flag-label">French</span>
+            </a>
+            <!-- Italian -->
+            <a href="#" class="flag-item disabled" title="Coming Soon">
+                <img src="https://flagcdn.com/w80/it.png" alt="Italian Flag" class="flag">
+                <span class="flag-label">Italian</span>
+            </a>
+            <!-- German -->
+            <a href="#" class="flag-item disabled" title="Coming Soon">
+                <img src="https://flagcdn.com/w80/de.png" alt="German Flag" class="flag">
+                <span class="flag-label">German</span>
+            </a>
+            <!-- English (UK) -->
+            <a href="#" class="flag-item disabled" title="Coming Soon">
+                <img src="https://flagcdn.com/w80/gb.png" alt="UK Flag" class="flag">
+                <span class="flag-label">English</span>
+            </a>
+            <!-- Polish -->
+            <a href="#" class="flag-item disabled" title="Coming Soon">
+                <img src="https://flagcdn.com/w80/pl.png" alt="Polish Flag" class="flag">
+                <span class="flag-label">Polish</span>
+            </a>
+            <!-- Hungarian -->
+            <a href="hungarian.html" class="flag-item" title="Check Hungarian Eligibility">
+                <img src="https://flagcdn.com/w80/hu.png" alt="Hungarian Flag" class="flag">
+                <span class="flag-label">Hungarian</span>
+            </a>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>

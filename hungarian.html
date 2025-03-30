@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hungarian Citizenship Eligibility</title>
+      <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="container">
+<select id="language-select" onchange="changeLanguage()">
+    <option value="en">English</option>
+    <option value="hu">Magyar</option> 
+    <option value="ro">Română</option>
+    <option value="es">Español</option>
+    <option value="uk">Українська</option>
+</select>
+
+        <h1 id="title">Hungarian Citizenship Eligibility Checker</h1>
+        
+        <!-- Initial Form -->
+        <div id="initial-form">
+            <h2 id="about-you">About you:</h2>
+            <label for="birthyear" id="label-birthyear">Year of Birth:</label>
+            <input type="number" id="birthyear" min="1800" max="2025" required>
+            
+            <button onclick="nextStep()" id="next-btn">Next</button>
+        </div>
+
+        <!-- Ancestor Form (Dynamic) -->
+        <div id="ancestor-form" style="display: none;">
+            <h2 id="ancestor-title"></h2>
+            <label for="ancestor-gender" id="label-ancestor-gender">Gender:</label>
+            <select id="ancestor-gender" required>
+                <option value="male" id="option-ancestor-male">Male</option>
+                <option value="female" id="option-ancestor-female">Female</option>
+            </select>
+            
+            <label for="ancestor-birthyear" id="label-ancestor-birthyear">Year of Birth:</label>
+            <input type="number" id="ancestor-birthyear" min="1800" max="2025" required oninput="updateHungaryDetails()">
+            
+            <label for="ancestor-country" id="label-ancestor-country">Born in Hungary?</label>
+            <select id="ancestor-country" required oninput="updateHungaryDetails()">
+                <option value="no" id="option-ancestor-country-no">No</option>
+                <option value="hungary" id="option-ancestor-country-yes">Yes</option>
+            </select>
+            
+            <div id="hungary-details" style="display: none;">
+                <label for="hungary-years" id="label-hungary-years">Years Lived in Hungary (e.g., 1900-1910, 1920-1925):</label>
+                <textarea id="hungary-years" rows="4" placeholder="" data-placeholder-en="Enter periods like 1900-1910, 1920-1925"></textarea>
+            </div>
+            
+            <button id="back-btn" onclick="goBack()">Back</button>
+            <button id="action-btn" onclick="handleAction()">Next Ancestor</button>
+        </div>
+
+        <!-- Result -->
+        <div id="result" style="display: none;">
+            <h2 id="result-title">Result</h2>
+            <p id="result-text"></p>
+            <button id="back-btn-result" onclick="goBackFromResult()">Back</button>
+        </div>
+    </div>
+    <script src="translations.js"></script>
+<script src="logic.js"></script>
+</body>
+</html>
