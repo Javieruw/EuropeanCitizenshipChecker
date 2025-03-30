@@ -3,7 +3,7 @@ let ancestorData = [];
 let currentLanguage = 'en';
 
 const translations = {
-    en: {
+en: {
         title: "Hungarian Citizenship Eligibility Checker",
         birthyear: "Year of Birth:",
         country: "Born in Hungary?",
@@ -22,13 +22,12 @@ const translations = {
         nextAncestor: "Next Ancestor",
         submit: "Submit",
         result: "Result",
-        your: "Your",
-        parentHungarian: "Parent on Hungarian Line",
-        grandparentHungarian: "Grandparent on Hungarian Line",
-        greatGrandparentHungarian: "Great Grandparent on Hungarian Line",
-        greatGreatGrandparentHungarian: "Great Great Grandparent on Hungarian Line",
+        your: "Information about you",
+        parentHungarian: "Information about Parent on Hungarian Line",
+        grandparentHungarian: "Information about Grandparent on Hungarian Line",
+        greatGrandparentHungarian: "Information about Great Grandparent on Hungarian Line",
+        greatGreatGrandparentHungarian: "Information about Great Great Grandparent on Hungarian Line",
         greatPrefixHungarian: "Great ",
-        information: "Information",
         bornIn: "Born in",
         aboutYou: "About you:",
         back: "Back",
@@ -47,7 +46,7 @@ const translations = {
             verificationModern: "Yes, you can get Hungarian citizenship by verification: Your ancestor retained citizenship under modern laws, and you can verify it without learning Hungarian."
         }
     },
-    es: {
+es: {
         title: "Verificador de Elegibilidad para la Ciudadanía Húngara",
         birthyear: "Año de Nacimiento:",
         country: "¿Nacido en Hungría?",
@@ -66,13 +65,12 @@ const translations = {
         nextAncestor: "Siguiente Ancestro",
         submit: "Enviar",
         result: "Resultado",
-        your: "Tu",
-        parentHungarian: "Padre o Madre en la Línea Húngara",
-        grandparentHungarian: "Abuelo/a en la Línea Húngara",
-        greatGrandparentHungarian: "Bisabuelo/a en la Línea Húngara",
-        greatGreatGrandparentHungarian: "Tatarabuelo/a en la Línea Húngara",
+        your: "Información sobre ti",
+        parentHungarian: "Información sobre el Padre o Madre en la Línea Húngara",
+        grandparentHungarian: "Información sobre el Abuelo/a en la Línea Húngara",
+        greatGrandparentHungarian: "Información sobre el Bisabuelo/a en la Línea Húngara",
+        greatGreatGrandparentHungarian: "Información sobre el Tatarabuelo/a en la Línea Húngara",
         greatPrefixHungarian: "Tatara ",
-        information: "Información",
         bornIn: "Nacido en",
         aboutYou: "Sobre ti:",
         back: "Volver",
@@ -91,7 +89,7 @@ const translations = {
             verificationModern: "Sí, puedes obtener la ciudadanía húngara por verificación: Tu ancestro retuvo la ciudadanía bajo leyes modernas, y puedes verificarla sin aprender húngaro."
         }
     },
-    ro: {
+ro: {
         title: "Verificator de Eligibilitate pentru Cetățenia Ungară",
         birthyear: "Anul Nașterii:",
         country: "Născut în Ungaria?",
@@ -110,13 +108,12 @@ const translations = {
         nextAncestor: "Următorul Strămoș",
         submit: "Trimite",
         result: "Rezultat",
-        your: "Al tău",
-        parentHungarian: "Părinte din Linia Ungară",
-        grandparentHungarian: "Bunic/Bunică din Linia Ungară",
-        greatGrandparentHungarian: "Străbunic/Străbunică din Linia Ungară",
-        greatGreatGrandparentHungarian: "Stră-străbunic/Stră-străbunică din Linia Ungară",
+        your: "Informații despre tine",
+        parentHungarian: "Informații despre Părinte din Linia Ungară",
+        grandparentHungarian: "Informații despre Bunic/Bunică din Linia Ungară",
+        greatGrandparentHungarian: "Informații despre Străbunic/Străbunică din Linia Ungară",
+        greatGreatGrandparentHungarian: "Informații despre Stră-străbunic/Stră-străbunică din Linia Ungară",
         greatPrefixHungarian: "Stră-",
-        information: "Informații",
         bornIn: "Născut în",
         aboutYou: "Despre tine:",
         back: "Înapoi",
@@ -135,7 +132,7 @@ const translations = {
             verificationModern: "Utilizator, da, poți obține cetățenia ungară prin verificare: Tu sau un strămoș al tău ați păstrat cetățenia conform legilor moderne, și o poți verifica fără să înveți maghiara."
         }
     },
-    uk: {
+uk: {
         title: "Перевірка права на угорське громадянство",
         birthyear: "Рік народження:",
         country: "Народжений в Угорщині?",
@@ -154,13 +151,12 @@ const translations = {
         nextAncestor: "Наступний предок",
         submit: "Надіслати",
         result: "Результат",
-        your: "Ваша",
-        parentHungarian: "Батько/Мати з Угорської Лінії",
-        grandparentHungarian: "Дід/Бабця з Угорської Лінії",
-        greatGrandparentHungarian: "Прадід/Прабабця з Угорської Лінії",
-        greatGreatGrandparentHungarian: "Прапрадід/Прапрабабця з Угорської Лінії",
+        your: "Інформація про вас",
+        parentHungarian: "Інформація про Батька/Матір з Угорської Лінії",
+        grandparentHungarian: "Інформація про Діда/Бабцю з Угорської Лінії",
+        greatGrandparentHungarian: "Інформація про Прадіда/Прабабцю з Угорської Лінії",
+        greatGreatGrandparentHungarian: "Інформація про Прапрадіда/Прапрабабцю з Угорської Лінії",
         greatPrefixHungarian: "Пра-",
-        information: "Інформація",
         bornIn: "Народжений в",
         aboutYou: "Про вас:",
         back: "Назад",
@@ -168,50 +164,38 @@ const translations = {
             fillFields: "Будь ласка, заповніть усі поля.",
             hungaryYears: "Будь ласка, введіть роки проживання в Угорщині."
         },
-        results: {
-            no: "Користувач, неможливо отримати громадянство: Ваш предок народився і покинув Угорщину до закону про національність 1879 року.",
-            no1800: "Користувач, неможливо отримати громадянство: Угорське походження не знайдено до 1800 року.",
-            simplified: "Користувач, так через спрощену натуралізацію: У вас є угорське походження, і ви можете подати заяву, але потрібно вивчити угорську.",
-            simplifiedFemale: "Користувач, так через спрощену натуралізацію: Жіночий предок народила до 1957 року, перервавши прямий ланцюг громадянства, але ви можете подати заяву з угорським походженням, якщо вивчите угорську.",
-            simplifiedLost: "Користувач, так через спрощену натуралізацію: Ваш предок втратив громадянство після того, як покинув Угорщину до 1929 року і залишався за кордоном понад 10 років, але ви можете подати заяву з угорським походженням, якщо вивчите угорську.",
-            simplifiedBoth: "Користувач, так через спрощену натуралізацію: Ваш предок втратив громадянство після того, як покинув Угорщину до 1929 року і залишався за кордоном понад 10 років, а жіночий предок народила до 1957 року, перервавши прямий ланцюг громадянства. Ви можете подати заяву з угорським походженням, якщо вивчите угорську.",
-            verificationParent: "Користувач, так, ви можете отримати угорське громадянство за підтвердженням: Ваш батько чи мати були громадянами Угорщини, і громадянство передалося вам (після 1957 від будь-якого з батьків, або до 1957 від батька). Знання мови не потрібне.",
-            verificationModern: "Користувач, так, ви можете отримати угорське громадянство за підтвердженням: Ви або ваш предок зберегли громадянство за сучасними законами, і ви можете його підтвердити без вивчення угорської."
-        }
-    },
-    hu: {
-    title: "Magyar Állampolgársági Jogosultság Ellenőrző",
-    birthyear: "Születési év:",
-    country: "Magyarországon született?",
-    countryNo: "Nem",
-    countryYes: "Igen",
-    next: "Következő",
-    ancestorGender: "Nem:",
-    ancestorMale: "Férfi",
-    ancestorFemale: "Nő",
-    ancestorBirthyear: "Születési év:",
-    ancestorCountry: "Magyarországon született?",
-    ancestorCountryNo: "Nem",
-    ancestorCountryYes: "Igen",
-    hungaryYears: "Magyarországon élt évek (pl. 1900-1910, 1920-1925):",
-    hungaryPlaceholder: "Adja meg az időszakokat, például 1900-1910, 1920-1925",
-    nextAncestor: "Következő ős",
-    submit: "Beküldés",
-    result: "Eredmény",
-    your: "Az ön",
-    parentHungarian: "Szülő a magyar vonalon",
-    grandparentHungarian: "Nagyszülő a magyar vonalon",
-    greatGrandparentHungarian: "Dédszülő a magyar vonalon",
-    greatGreatGrandparentHungarian: "Ükszülő a magyar vonalon",
-    greatPrefixHungarian: "Ük",
-    information: "Információ",
-    bornIn: "Született",
-    aboutYou: "Önről:",
-    back: "Vissza",
-    errors: {
-        fillFields: "Kérjük, töltse ki az összes mezőt.",
-        hungaryYears: "Kérjük, adja meg a Magyarországon eltöltött éveket."
-    },
+hu: {
+        title: "Magyar Állampolgársági Jogosultság Ellenőrző",
+        birthyear: "Születési év:",
+        country: "Magyarországon született?",
+        countryNo: "Nem",
+        countryYes: "Igen",
+        next: "Következő",
+        ancestorGender: "Nem:",
+        ancestorMale: "Férfi",
+        ancestorFemale: "Nő",
+        ancestorBirthyear: "Születési év:",
+        ancestorCountry: "Magyarországon született?",
+        ancestorCountryNo: "Nem",
+        ancestorCountryYes: "Igen",
+        hungaryYears: "Magyarországon élt évek (pl. 1900-1910, 1920-1925):",
+        hungaryPlaceholder: "Adja meg az időszakokat, például 1900-1910, 1920-1925",
+        nextAncestor: "Következő ős",
+        submit: "Beküldés",
+        result: "Eredmény",
+        your: "Információ önről",
+        parentHungarian: "Információ a magyar vonalon lévő szülőről",
+        grandparentHungarian: "Információ a magyar vonalon lévő nagyszülőről",
+        greatGrandparentHungarian: "Információ a magyar vonalon lévő dédszülőről",
+        greatGreatGrandparentHungarian: "Információ a magyar vonalon lévő ükszülőről",
+        greatPrefixHungarian: "Ük",
+        bornIn: "Született",
+        aboutYou: "Önről:",
+        back: "Vissza",
+        errors: {
+            fillFields: "Kérjük, töltse ki az összes mezőt.",
+            hungaryYears: "Kérjük, adja meg a Magyarországon eltöltött éveket."
+        },
     results: {
         no: "Nem lehetséges az állampolgárság megszerzése: Őse 1879 előtt született és elhagyta Magyarországot az állampolgársági törvény előtt.",
         no1800: "Nem lehetséges az állampolgárság megszerzése: Nem található magyar ős 1800-ig.",
@@ -227,36 +211,10 @@ const translations = {
 
 };
 
+
 function changeLanguage() {
     currentLanguage = document.getElementById("language-select").value;
-    applyTranslations();
-}
-
-function applyTranslations() {
-    const t = translations[currentLanguage];
-
-    document.getElementById("title").innerText = t.title;
-    document.getElementById("about-you").innerText = t.aboutYou;
-    document.getElementById("label-birthyear").innerText = t.birthyear;
-    document.getElementById("next-btn").innerText = t.next;
-
-    document.getElementById("label-ancestor-gender").innerText = t.ancestorGender;
-    document.getElementById("option-ancestor-male").innerText = t.ancestorMale;
-    document.getElementById("option-ancestor-female").innerText = t.ancestorFemale;
-
-    document.getElementById("label-ancestor-birthyear").innerText = t.ancestorBirthyear;
-    document.getElementById("label-ancestor-country").innerText = t.ancestorCountry;
-    document.getElementById("option-ancestor-country-no").innerText = t.ancestorCountryNo;
-    document.getElementById("option-ancestor-country-yes").innerText = t.ancestorCountryYes;
-
-    document.getElementById("label-hungary-years").innerText = t.hungaryYears;
-    document.getElementById("hungary-years").setAttribute("placeholder", t.hungaryPlaceholder);
-
-    document.getElementById("back-btn").innerText = t.back;
-    document.getElementById("action-btn").innerText = t.nextAncestor;
-
-    document.getElementById("result-title").innerText = t.result;
-    document.getElementById("back-btn-result").innerText = t.back;
+    updateUIText();
 }
 
 function updateUIText() {
@@ -264,13 +222,11 @@ function updateUIText() {
     const isAncestorFormVisible = document.getElementById('ancestor-form').style.display === 'block';
     const isResultVisible = document.getElementById('result').style.display === 'block';
 
-    // Initial form elements
     document.getElementById('title').textContent = t.title;
     document.getElementById('about-you').textContent = t.aboutYou;
     document.getElementById('label-birthyear').textContent = t.birthyear;
     document.getElementById('next-btn').textContent = t.next;
 
-    // Ancestor form elements (only update if visible)
     if (isAncestorFormVisible) {
         document.getElementById('label-ancestor-gender').textContent = t.ancestorGender;
         document.getElementById('option-ancestor-male').textContent = t.ancestorMale;
@@ -284,36 +240,37 @@ function updateUIText() {
         document.getElementById('back-btn').textContent = t.back;
 
         const actionBtn = document.getElementById('action-btn');
-        actionBtn.textContent = document.getElementById('ancestor-country').value === 'hungary' ? t.submit : t.nextAncestor;
+        const isHungary = document.getElementById('ancestor-country').value === 'hungary';
+        actionBtn.textContent = isHungary ? t.submit : t.nextAncestor;
 
         const ancestorTitle = document.getElementById('ancestor-title');
-        const isHungary = document.getElementById('ancestor-country').value === 'hungary';
-        ancestorTitle.textContent = `${getAncestorTitle(currentLevel)} ${t.information}${isHungary ? ` (${t.bornIn} ${getHungaryText()})` : ''}`;
+        ancestorTitle.textContent = `${getAncestorTitle(currentLevel)}${isHungary ? ` (${t.bornIn} ${getHungaryText()})` : ''}`;
     }
 
-    // Result section (only update if visible)
     if (isResultVisible) {
         document.getElementById('result-title').textContent = t.result;
         document.getElementById('back-btn-result').textContent = t.back;
+        if (currentResultKey) {
+            document.getElementById('result-text').textContent = t.results[currentResultKey];
+        }
     }
 }
 
 function getHungaryText() {
-    return currentLanguage === 'es' ? 'Hungría' : currentLanguage === 'ro' ? 'Ungaria' : currentLanguage === 'uk' ? 'Угорщина' : 'Hungary';
+    return currentLanguage === 'es' ? 'Hungría' : currentLanguage === 'ro' ? 'Ungaria' : currentLanguage === 'uk' ? 'Угорщина' : currentLanguage === 'hu' ? 'Magyarország' : 'Hungary';
 }
 
 function nextStep() {
     const birthyear = parseInt(document.getElementById('birthyear').value);
-
     if (!birthyear) {
         alert(translations[currentLanguage].errors.fillFields);
         return;
     }
-
-    ancestorData.push({ level: 'self', birthyear }); // No country field in initial form
+    ancestorData.push({ level: 'self', birthyear });
     document.getElementById('initial-form').style.display = 'none';
     currentLevel = 1;
     showAncestorForm(getAncestorTitle(currentLevel), false);
+    updateUIText();
 }
 
 function getAncestorTitle(level) {
@@ -331,7 +288,8 @@ function showAncestorForm(levelTitle, isHungary, previousData = null) {
     document.getElementById('initial-form').style.display = 'none';
     document.getElementById('result').style.display = 'none';
     const t = translations[currentLanguage];
-    document.getElementById('ancestor-title').textContent = `${levelTitle} ${t.information}${isHungary ? ` (${t.bornIn} ${getHungaryText()})` : ''}`;
+    
+    document.getElementById('ancestor-title').textContent = `${levelTitle}${isHungary ? ` (${t.bornIn} ${getHungaryText()})` : ''}`;
 
     if (previousData) {
         document.getElementById('ancestor-gender').value = previousData.gender || 'male';
@@ -360,7 +318,7 @@ function updateHungaryDetails() {
     document.getElementById('hungary-details').style.display = showHungaryDetails ? 'block' : 'none';
     document.getElementById('action-btn').textContent = isHungary ? t.submit : t.nextAncestor;
     const levelTitle = getAncestorTitle(currentLevel);
-    document.getElementById('ancestor-title').textContent = `${levelTitle} ${t.information}${isHungary ? ` (${t.bornIn} ${getHungaryText()})` : ''}`;
+    document.getElementById('ancestor-title').textContent = `${levelTitle}${isHungary ? ` (${t.bornIn} ${getHungaryText()})` : ''}`;
 }
 
 function handleAction() {
@@ -378,8 +336,7 @@ function handleAction() {
     const newAncestor = { level, country, gender, birthyear };
 
     if (birthyear <= 1800 && !ancestorData.some(a => a.country === 'hungary')) {
-        const result = translations[currentLanguage].results.no1800;
-        showResult(result);
+        showResult('no1800');
         return;
     }
 
@@ -402,29 +359,28 @@ function handleAction() {
         ancestorData.push(newAncestor);
         currentLevel++;
         showAncestorForm(getAncestorTitle(currentLevel), false);
+        updateUIText();
     }
 }
 
 function goBack() {
     if (currentLevel === 0) {
-        // Shouldn't happen since initial-form has no back button, but included for safety
         document.getElementById('ancestor-form').style.display = 'none';
         document.getElementById('initial-form').style.display = 'block';
         const selfData = ancestorData.pop() || { birthyear: '' };
         document.getElementById('birthyear').value = selfData.birthyear || '';
-        currentLevel = 0; // Reset to initial state
+        currentLevel = 0;
     } else if (currentLevel > 0) {
         const previousData = ancestorData.pop();
         currentLevel--;
         if (currentLevel === 0) {
-            // Back to initial form
             document.getElementById('ancestor-form').style.display = 'none';
             document.getElementById('initial-form').style.display = 'block';
             document.getElementById('birthyear').value = previousData.birthyear || '';
         } else {
-            // Back to previous ancestor
             showAncestorForm(getAncestorTitle(currentLevel), previousData.country === 'hungary', previousData);
         }
+        updateUIText();
     }
 }
 
@@ -440,6 +396,7 @@ function goBackFromResult() {
         currentLevel--;
         showAncestorForm(getAncestorTitle(currentLevel), previousData.country === 'hungary', previousData);
     }
+    updateUIText();
 }
 
 function determineEligibility() {
@@ -447,14 +404,13 @@ function determineEligibility() {
     const birthYearHungarian = hungarianAncestor ? hungarianAncestor.birthyear : null;
     const lastYearInHungary = hungarianAncestor && hungarianAncestor.years ? Math.max(...hungarianAncestor.years.map(p => p.end)) : birthYearHungarian;
     const self = ancestorData[0];
-    const t = translations[currentLanguage].results;
 
-    let result = '';
+    let resultKey = '';
     let lostCitizenship = false;
     let femaleBreak = false;
 
     if (!hungarianAncestor || (birthYearHungarian < 1879 && lastYearInHungary < 1879)) {
-        result = t.no;
+        resultKey = 'no';
     } else {
         if (birthYearHungarian < 1930 && lastYearInHungary < 1929 && (new Date().getFullYear() - lastYearInHungary) > 10) {
             lostCitizenship = true;
@@ -473,38 +429,35 @@ function determineEligibility() {
             const parentOfSelf = ancestorData[1] || null;
             if (parentOfSelf && parentOfSelf.country === 'hungary') {
                 if (self.birthyear >= 1957 || (self.birthyear < 1957 && parentOfSelf.gender === 'male')) {
-                    result = t.verificationParent;
+                    resultKey = 'verificationParent';
                 } else {
-                    result = t.simplified;
+                    resultKey = 'simplified';
                 }
             } else if (birthYearHungarian >= 1930 || (lastYearInHungary && lastYearInHungary >= 1929)) {
-                result = t.verificationModern;
+                resultKey = 'verificationModern';
             } else {
-                result = t.simplified;
+                resultKey = 'simplified';
             }
         } else {
             if (lostCitizenship && femaleBreak) {
-                result = t.simplifiedBoth;
+                resultKey = 'simplifiedBoth';
             } else if (lostCitizenship) {
-                result = t.simplifiedLost;
+                resultKey = 'simplifiedLost';
             } else if (femaleBreak) {
-                result = t.simplifiedFemale;
+                resultKey = 'simplifiedFemale';
             }
         }
     }
 
-    showResult(result);
+    showResult(resultKey);
 }
 
-function showResult(text) {
+function showResult(resultKey) {
     document.getElementById('ancestor-form').style.display = 'none';
     document.getElementById('initial-form').style.display = 'none';
     document.getElementById('result').style.display = 'block';
-    document.getElementById('result-text').textContent = text;
-}
-
-function changeLanguage() {
-    currentLanguage = document.getElementById('language-select').value;
+    currentResultKey = resultKey;
+    document.getElementById('result-text').textContent = translations[currentLanguage].results[resultKey];
     updateUIText();
 }
 
