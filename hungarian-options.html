@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hungarian Citizenship Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+        .option-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .option-item:hover {
+            transform: scale(1.05);
+            border-color: #007bff;
+        }
+        .option-item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: #ccc;
+        }
+        .option-item.disabled:hover {
+            transform: none;
+            border-color: #ccc;
+        }
+        .option-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+        .option-label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .option-status {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hungarian Citizenship Options</h1>
+        <div class="options-grid">
+            <!-- By Ancestry -->
+            <a href="hungarian-ancestry.html" class="option-item" title="Check Eligibility by Ancestry">
+                <img src="https://img.icons8.com/ios-filled/40/000000/family.png" alt="Ancestry Icon" class="option-icon">
+                <span class="option-label">By Ancestry</span>
+                <span class="option-status">Available Now</span>
+            </a>
+            <!-- By Marriage -->
+            <a href="#" class="option-item disabled" title="Coming Soon">
+                <img src="https://img.icons8.com/ios-filled/40/000000/wedding-rings.png" alt="Marriage Icon" class="option-icon">
+                <span class="option-label">By Marriage</span>
+                <span class="option-status">Coming Soon</span>
+            </a>
+            <!-- By Residence Naturalization -->
+            <a href="#" class="option-item disabled" title="Coming Soon">
+                <img src="https://img.icons8.com/ios-filled/40/000000/home.png" alt="Residence Icon" class="option-icon">
+                <span class="option-label">By Residence</span>
+                <span class="option-status">Coming Soon</span>
+            </a>
+            <!-- Regain Citizenship -->
+            <a href="#" class="option-item disabled" title="Coming Soon">
+                <img src="https://img.icons8.com/ios-filled/40/000000/refresh.png" alt="Regain Icon" class="option-icon">
+                <span class="option-label">Regain Citizenship</span>
+                <span class="option-status">Coming Soon</span>
+            </a>
+        </div>
+        <a href="index.html" class="back-link">Back to Countries</a>
+    </div>
+</body>
+</html>
